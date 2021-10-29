@@ -199,6 +199,32 @@ const SideBarMemories = () => {
   );
 };
 
+const SideBarMyMemories = ({ user }) => {
+  const today = new Date();
+  const todayString = format(today, 'MMdd');
+  const lastYear = today.getFullYear() - 1;
+
+  const yearLinks = [];
+  for (let year = lastYear; year >= 2005; year--) {
+    yearLinks.push(
+      <Link key={year} to={`/${user.username}/memories/${year}${todayString}`}>
+        {year}
+      </Link>,
+    );
+  }
+
+  return (
+    <div className="box" role="navigation">
+      <div className="box-header-memories" role="heading">
+        My memories of {format(today, 'MMMM\u00A0d')}
+      </div>
+      <div className="box-body">
+        <div className="year-links-row">{yearLinks}</div>
+      </div>
+    </div>
+  );
+};
+
 const SideBarGroups = () => {
   return (
     <div className="box" role="navigation">
@@ -371,6 +397,7 @@ export default function SideBar({ user, signOut }) {
           <SideBarFreeFeed />
           <SideBarBookmarklet />
           <SideBarMemories />
+          <SideBarMyMemories user={user} />
           <DonationWidget />
           <SideBarAppearance />
         </ErrorBoundary>
