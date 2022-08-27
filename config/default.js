@@ -25,6 +25,7 @@ export default {
   search: {
     searchEngine: null,
   },
+
   siteDomains: [
     // for transform links in the posts, comments, etc.
     'freefeed.net',
