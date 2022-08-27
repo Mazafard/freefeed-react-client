@@ -752,3 +752,7 @@ export function sanitizeMedia() {
 export function getCommentByNumber({ postId, seqNumber }) {
   return fetch(`${apiRoot}/v2/posts/${postId}/comments/${seqNumber}`, getRequestOptions());
 }
+
+export function getSingleComment({ commentId }) {
+  return fetch(`${apiRoot}/v1/comments/${commentId}`, getRequestOptions());
+}
